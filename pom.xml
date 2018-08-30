@@ -1,67 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>es.um</groupId>
+	<groupId>es.um.architecture</groupId>
 	<version>1.0.0-SNAPSHOT</version>
 	<artifactId>ms-core</artifactId>
 	<name>ms-core</name>
-	<description>Core Module for Spring Boot</description>
+	<packaging>jar</packaging>
+
+	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.3.5.RELEASE</version>
-		<relativePath />
+		<version>1.5.15.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<exclude.database.dependencies>false</exclude.database.dependencies>
-		<spring.cloud.version>1.1.0.RELEASE</spring.cloud.version>
-		<spring-cloud-dependencies.version>Brixton.RELEASE</spring-cloud-dependencies.version>
-		<spring-boot.admin>1.3.3</spring-boot.admin>
-		<feign-gson.version>8.17.0</feign-gson.version>
-		<janino.version>2.7.8</janino.version>
-		<lombok.version>1.16.10</lombok.version>
-		<spring.boot.version>1.3.5.RELEASE</spring.boot.version>
-		<spring.cloud.ribbon>1.1.0.RELEASE</spring.cloud.ribbon>
-		<spring.retry>1.1.2.RELEASE</spring.retry>
-		<ojdbc.version>8</ojdbc.version>
-		<ons.version>1.0.0</ons.version>
-		<scala.lang.version>2.11.0</scala.lang.version>
-		<metrics.graphite.version>3.1.0</metrics.graphite.version>
-		<metrics.core.version>3.1.0</metrics.core.version>
-		<hystrix.codehale.metrics.publisher.version>1.5.2</hystrix.codehale.metrics.publisher.version>
-		<infinispan.client.hotrod.version>9.0.0.Final</infinispan.client.hotrod.version>
-		<infinispan.spring4.remote.version>9.0.0.Final</infinispan.spring4.remote.version>
+		<spring-boot-admin.version>1.5.7</spring-boot-admin.version>
+		<spring-cloud.version>Edgware.SR4</spring-cloud.version>
+		<feign-gson.version>8.18.0</feign-gson.version>
+		<spring.boot.version>1.5.15.RELEASE</spring.boot.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-dependencies</artifactId>
-			<version>${spring-cloud-dependencies.version}</version>
-			<type>pom</type>
-			<scope>import</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-client</artifactId>
-			<version>${spring-boot.admin}</version>
 		</dependency>
 		<dependency>
 			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-server</artifactId>
-			<version>${spring-boot.admin}</version>
+			<artifactId>spring-boot-admin-starter-server</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-server-ui</artifactId>
-			<version>${spring-boot.admin}</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.netflix.feign</groupId>
@@ -69,210 +72,60 @@
 			<version>${feign-gson.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.janino</groupId>
-			<artifactId>janino</artifactId>
-		
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-parent</artifactId>
-			<version>${spring.boot.version}</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-netflix</artifactId>
-			<version>${spring.cloud.version}</version>
-			<type>pom</type>
-			<scope>import</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-			
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-			<version>${spring.cloud.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-hystrix</artifactId>
-			<version>${spring.cloud.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
-			<version>${spring.cloud.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zuul</artifactId>
-			<version>${spring.cloud.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-netflix-turbine</artifactId>
-			<version>${spring.cloud.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-ribbon</artifactId>
-			<version>${spring.cloud.ribbon}</version>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
-			
-		</dependency>
-		<!-- Dependencias para establecer la conexión con la base de datosc -->
-		<dependency>
-			<groupId>ojdbc</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>${ojdbc.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ucp</artifactId>
-			<version>${ojdbc.version}</version>
-		</dependency>
-		<!-- Fin dependencias para establecer la conexión con la base de datosc -->
-		
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.lang.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.dropwizard.metrics</groupId>
-			<artifactId>metrics-graphite</artifactId>
-			
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>io.dropwizard.metrics</groupId>
-			<artifactId>metrics-core</artifactId>
-			
-		</dependency>
-		<!-- Librerias SpringFox: inicio -->
-		<dependency>
-			<groupId>org.infinispan</groupId>
-			<artifactId>infinispan-client-hotrod</artifactId>
-			<version>${infinispan.client.hotrod.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.infinispan</groupId>
-			<artifactId> infinispan-spring4-remote</artifactId>
-			<version>${infinispan.spring4.remote.version}</version>
-		</dependency>
-		<!-- Librerias SpringFox: fin -->
-		<dependency>
-			<groupId>com.netflix.hystrix</groupId>
-			<artifactId>hystrix-codahale-metrics-publisher</artifactId>
-			<version>${hystrix.codehale.metrics.publisher.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.codahale.metrics</groupId>
-					<artifactId>metrics-core</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+<dependency>
+<groupId>org.springframework.cloud</groupId>
+<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jta-bitronix</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
-	<!-- TODO: los pluggins van en el ms-parent, junto con la dependencia de 
-		este -->
-	<build>
-		<plugins>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-dependencies</artifactId>
+				<version>${spring-boot-admin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-			<!-- This module also builds a test-jar -->
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>test-jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 
-	</build>
-
-
-	<!-- TODO: CORREGIR ESTO -->
-	<!-- <profiles> -->
-	<!-- <profile> -->
-	<!-- <id>pre</id> -->
-	<!-- <activation></activation> -->
-	<!-- <properties></properties> -->
-	<!-- <distributionManagement> -->
-	<!-- <repository> -->
-	<!-- <id>microservices-releases</id> -->
-	<!-- <name>Releases orange microservices</name> -->
-	<!-- <url>https://torredecontrol.int.si.orange.es/nexus/repository/microservices-releases</url> -->
-	<!-- </repository> -->
-	<!-- <snapshotRepository> -->
-	<!-- <id>microservices-snapshots</id> -->
-	<!-- <name>Snapshots orange microservices</name> -->
-	<!-- <url>https://torredecontrol.int.si.orange.es/nexus/repository/microservices-snapshots</url> -->
-	<!-- </snapshotRepository> -->
-	<!-- </distributionManagement> -->
-	<!-- </profile> -->
-	<!-- <profile> -->
-	<!-- <id>pro</id> -->
-	<!-- <activation> -->
-	<!-- <activeByDefault>true</activeByDefault> -->
-	<!-- </activation> -->
-	<!-- <properties></properties> -->
-	<!-- <distributionManagement> -->
-	<!-- <repository> -->
-	<!-- <id>microservices-releases</id> -->
-	<!-- <name>Releases orange microservices</name> -->
-	<!-- <url>https://torredecontrol.si.orange.es/nexus/repository/microservices-releases</url> -->
-	<!-- </repository> -->
-	<!-- <snapshotRepository> -->
-	<!-- <id>microservices-snapshots</id> -->
-	<!-- <name>Snapshots orange microservices</name> -->
-	<!-- <url>https://torredecontrol.si.orange.es/nexus/repository/microservices-snapshots</url> -->
-	<!-- </snapshotRepository> -->
-	<!-- </distributionManagement> -->
-	<!-- </profile> -->
-	<!-- </profiles> -->
 </project>
